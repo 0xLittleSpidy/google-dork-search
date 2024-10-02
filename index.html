@@ -46,9 +46,10 @@
         <input type="text" id="domainInput" placeholder="Enter Domain Name">
     </div>
     <div class="dork-buttons">
-        <button onclick="searchDork('site')">Site Search</button>
-        <button onclick="searchDork('filetype')">Filetype Search</button>
-        <button onclick="searchDork('intitle')">Intitle Search</button>
+        <button onclick="searchDork('s3')">S3 Buckets</button>
+        <button onclick="searchDork('blob')">Azure Blobs</button>
+        <button onclick="searchDork('googleapis')">Google APIs</button>
+        <button onclick="searchDork('drive')">Google Drive</button>
     </div>
 
     <script>
@@ -61,14 +62,17 @@
 
             let url = '';
             switch (type) {
-                case 'site':
-                    url = `https://www.google.com/search?q=site:${domain}`;
+                case 's3':
+                    url = `https://www.google.com/search?q=site:s3.amazonaws.com+"${domain}"`;
                     break;
-                case 'filetype':
-                    url = `https://www.google.com/search?q=site:${domain}+filetype:pdf`;
+                case 'blob':
+                    url = `https://www.google.com/search?q=site:blob.core.windows.net+"${domain}"`;
                     break;
-                case 'intitle':
-                    url = `https://www.google.com/search?q=site:${domain}+intitle:index+of`;
+                case 'googleapis':
+                    url = `https://www.google.com/search?q=site:googleapis.com+"${domain}"`;
+                    break;
+                case 'drive':
+                    url = `https://www.google.com/search?q=site:drive.google.com+"${domain}"`;
                     break;
                 default:
                     return;
