@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Dork Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .dork-buttons {
+            margin-top: 20px;
+        }
+        .dork-buttons button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Google Dork Search</h1>
+    <div class="search-container">
+        <input type="text" id="domainInput" placeholder="Enter Domain Name">
+    </div>
+    <div class="dork-buttons">
+        <button onclick="searchDork('site')">Site Search</button>
+        <button onclick="searchDork('filetype')">Filetype Search</button>
+        <button onclick="searchDork('intitle')">Intitle Search</button>
+    </div>
+
+    <script>
+        function searchDork(type) {
+            const domain = document.getElementById('domainInput').value.trim();
+            if (domain === '') {
+                alert('Please enter a domain name.');
+                return;
+            }
+
+            let url = '';
+            switch (type) {
+                case 'site':
+                    url = `https://www.google.com/search?q=site:${domain}`;
+                    break;
+                case 'filetype':
+                    url = `https://www.google.com/search?q=site:${domain}+filetype:pdf`;
+                    break;
+                case 'intitle':
+                    url = `https://www.google.com/search?q=site:${domain}+intitle:index+of`;
+                    break;
+                default:
+                    return;
+            }
+
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
